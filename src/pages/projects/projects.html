@@ -1,0 +1,38 @@
+<section class="stack">
+  <h1>Recent Projects</h1>
+  <div class="blocks">
+    <article class="card" *ngFor="let p of projects()">
+      <h3>{{ p.title }}</h3>
+      <div class="project">
+        <img *ngIf="p.img" [src]="p.img" alt="{{ p.title }}" style="width:100%; height:auto; border-radius:8px;">
+        <div class="project-info">
+          <p>{{ p.description }}</p>
+          <p *ngIf="p.link"><a [href]="p.link" target="_blank" rel="noopener">View project →</a></p>
+          <p class="help" *ngIf="p.year">Year: {{ p.year }}</p>
+          <p style="font-size:small; margin: 0px;">Tags and Technologies: </p>
+          <p style="font-size:small; margin-top: 1px;">
+            <span
+              class="badge"
+              *ngFor="let t of p.tech; let last = last"
+              style="margin-right:.4rem"
+            >
+              {{ t }}
+              <span *ngIf="!last"> |</span>
+            </span>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="stack" style="margin-top:2rem">
+  <h2>Awards & Achievements</h2>
+  <div class="grid cols-2">
+    <article class="card" *ngFor="let a of awards()">
+      <h3>{{ a.title }}</h3>
+      <p class="help">{{ a.issuer ?? '—' }} • {{ a.year }}</p>
+      <p *ngIf="a.note">{{ a.note }}</p>
+    </article>
+  </div>
+</section>

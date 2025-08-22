@@ -1,0 +1,88 @@
+import { Component, signal, computed } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  link?: string;
+  year?: number;
+  img?: string; // Optional image URL for the project
+};
+type Award = {
+  title: string;
+  issuer?: string;
+  year: number;
+  note?: string;
+};
+
+@Component({
+  standalone: true,
+  selector: 'projects-page',
+  imports: [NgFor, NgIf],
+  templateUrl: './projects.html',
+  styleUrl: './projects.scss'
+})
+export class ProjectsPage {
+  projects = signal<Project[]>([
+    {
+      title: 'This Portfolio Website!',
+      description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
+      tech: ['Angular', ],
+      link: 'https://example.com/ive',
+      year: 2025
+    },    
+    {
+      title: 'Eyeballs',
+      description: 'Eyeballs.',
+      tech: ['ArduinoIDE', 'hardware', 'embedded', 'ESP32'],
+      link: 'https://example.com/ive',
+      year: 2025
+    },
+    {
+      title: 'Bluetooth enabled SD Card MP3 Player from Scratch',
+      description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
+      tech: ['ArduinoIDE', 'hardware', 'embedded', 'ESP32'],  // tags/keywords
+      link: 'https://example.com/ive',
+      year: 2025
+    },
+    {
+      title: 'WeHack Hackathon - Best Use of Cloudflare Winner',
+      description: 'Winner of the Best use of Cloudflare in a hackathon project, this project leveraged Cloudflare Workers and KV for a real-time data processing application to improve new graduate financial literacy and planning complete with accessibility tools like speech-to-text.',
+      tech: ['Hackathon', 'LLM', 'GenAI', 'Cloudflare', 'Workers', 'KV', 'Real-time data', ],
+      link: 'https://devpost.com/software/planit-p6xz4q',
+      year: 2025,
+      img: 'wehack_win.jpg' // Optional image URL
+    },
+    {
+      title: 'RuneRoutes - Capstone Project',
+      description: 'React Native app with POIs, custom markers, and fog-of-war exploration.',
+      tech: ['Hackathon', 'React Native', 'Mapbox', 'Turf.js'],
+      year: 2025,
+      img: 'capstone.jpg'
+    },
+    {
+      title: 'HackUNT Hackathon - Best DEI Hack sponsored by Fidelity',
+      description: 'Translation rover for a hackathon project that won the Best DEI Hack sponsored by Fidelity. This project utilized a translation API to create a real-time translation tool for non-native English speakers, enhancing accessibility and inclusivity.',
+      tech: [],
+      link: 'https://devpost.com/software/glorp',
+      year: 2024,
+      img: 'hackunt_win.jpg'
+    },
+    {
+      title: '3D Printed Electric Violin',
+      description: '',
+      tech: [],
+      link: 'https://example.com/predictive-maintenance',
+      year: 2022,
+      img: 'violin.png'
+    }
+  ]);
+
+  awards = signal<Award[]>([
+    { title: 'bla bla bla', issuer: 'blah blah blah', year: 2024, note: 'something something' },
+    { title: 'bla bla bla', year: 2024 }
+  ]);
+
+  latestYear = computed(() => Math.max(...this.projects().map(p => p.year ?? 0)));
+}
