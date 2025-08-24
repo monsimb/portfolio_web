@@ -1,5 +1,4 @@
 import { Component, signal, computed } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
 
 type Project = {
   title: string;
@@ -19,11 +18,18 @@ type Award = {
 @Component({
   standalone: true,
   selector: 'projects-page',
-  imports: [NgFor, NgIf],
+  imports: [],
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
 })
 export class ProjectsPage {
+  private filter = signal<'All' | 'Hackathon' | 'Personal' | string>('All');
+  get currentFilter(): string {
+    return this.filter();
+  }
+  setFilter = (t: string) => this.filter.set(t);
+  isActive = (t: string) => this.currentFilter === t;
+
   projects = signal<Project[]>([
     {
       title: 'This Portfolio Website!',
@@ -78,6 +84,21 @@ export class ProjectsPage {
       img: 'violin.png'
     }
   ]);
+  allTags = computed(() => {
+    const tags = new Set<string>();
+    for (const p of this.projects()) {
+      if (p.tech) {
+        for (const t of p.tech) tags.add(t);
+      }
+    }
+    return ['All', ...tags];
+  });
+
+  filteredProjects = computed(() => {
+    const f = this.filter();
+    const list = this.projects();
+    return f === 'All' ? list : list.filter(p => p.tech && p.tech.includes(f));
+  });
 
   awards = signal<Award[]>([
     { title: 'bla bla bla', issuer: 'blah blah blah', year: 2024, note: 'something something' },

@@ -1,44 +1,100 @@
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
 
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    margin-bottom: 1rem;
+  }
+}
 
+.sidebar {
+  position: sticky;
+  top: 1rem;
+  background: var(--surface-1, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.sidebar-title {
+  margin: 0 0 .5rem 0;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.filters button {
+  appearance: none;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--surface-2, #f8fafc);
+  padding: .4rem .7rem;
+  border-radius: 9999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filters button.active,
+.filters button[aria-pressed="true"] {
+  background: var(--accent, #3b82f6);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Content grid */
 .blocks {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    justify-items: stretch;
-    align-items: stretch;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; // changed from center
-    text-align: left;     // changed from center
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0;            // remove margin
-    width: 100%;          // ensure card fills grid cell
-    box-sizing: border-box;
-    h3{
-        display: flex;
-        align-items: center; /* Vertically centers content within the flex container */
-        height: 20px; /* Example height for the container */
-    }
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--surface-1, #fff);
 }
 
 .project {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; // changed from center
-    text-align: left;     // changed from center
-    gap: 2rem;
-    img {
-        max-width: 100%;
-        max-height: 600px; // limit image height
-        object-fit: cover; // crop if needed
-        border-radius: 8px;
-        width: 100%;
-    }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+
+.project-info .muted {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: .25rem 0 0;
+}
+
+.tags-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem .5rem;
+  align-items: center;
+  margin-top: .25rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: .15rem .5rem;
+  border-radius: 9999px;
+  background: #eef2ff;
+  font-size: .8rem;
+}
+
+.sep {
+  opacity: .5;
 }
