@@ -41,21 +41,21 @@ export class ProjectsPage {
     {
       title: 'Eyeballs',
       description: 'Eyeballs.',
-      tech: ['ArduinoIDE', 'hardware', 'embedded', 'ESP32'],
+      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],
       link: 'https://example.com/ive',
       year: 2025
     },
     {
       title: 'Bluetooth enabled SD Card MP3 Player from Scratch',
       description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
-      tech: ['ArduinoIDE', 'hardware', 'embedded', 'ESP32'],  // tags/keywords
+      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],  // tags/keywords
       link: 'https://example.com/ive',
       year: 2025
     },
     {
       title: 'WeHack Hackathon - Best Use of Cloudflare Winner',
       description: 'Winner of the Best use of Cloudflare in a hackathon project, this project leveraged Cloudflare Workers and KV for a real-time data processing application to improve new graduate financial literacy and planning complete with accessibility tools like speech-to-text.',
-      tech: ['Hackathon', 'LLM', 'GenAI', 'Cloudflare', 'Workers', 'KV', 'Real-time data', ],
+      tech: ['Hackathon', 'LLM', 'GenAI', 'Cloudflare', 'Real-time data', ],
       link: 'https://devpost.com/software/planit-p6xz4q',
       year: 2025,
       img: 'wehack_win.jpg' // Optional image URL
@@ -63,14 +63,14 @@ export class ProjectsPage {
     {
       title: 'RuneRoutes - Capstone Project',
       description: 'React Native app with POIs, custom markers, and fog-of-war exploration.',
-      tech: ['Hackathon', 'React Native', 'Mapbox', 'Turf.js'],
+      tech: ['Hackathon', 'Mobile', 'React Native', 'Mapbox', 'Turf.js'],
       year: 2025,
       img: 'capstone.jpg'
     },
     {
       title: 'HackUNT Hackathon - Best DEI Hack sponsored by Fidelity',
       description: 'Translation rover for a hackathon project that won the Best DEI Hack sponsored by Fidelity. This project utilized a translation API to create a real-time translation tool for non-native English speakers, enhancing accessibility and inclusivity.',
-      tech: [],
+      tech: ['Hackathon', 'Mobile', 'Flutter'],
       link: 'https://devpost.com/software/glorp',
       year: 2024,
       img: 'hackunt_win.jpg'

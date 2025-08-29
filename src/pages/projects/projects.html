@@ -46,7 +46,7 @@
 
                 <p class="muted">Tags and technologies:</p>
                 <p class="tags-line">
-                  @if (p.tech?.length) {
+                  @if (p.tech.length) {
                     @for (t of p.tech; let last = $last; track t) {
                       <span class="badge">{{ t }}</span>
                       @if (!last) { <span class="sep">|</span> }
