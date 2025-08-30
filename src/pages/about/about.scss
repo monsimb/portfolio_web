@@ -1,2 +1,96 @@
-ul { margin: 0; padding-left: 1.1rem; }
-li { margin: .4rem 0; }
+
+.section{ margin-block: var(--space-6); }
+.section-title{ 
+  font-size: clamp(1.25rem, 1.2rem + 1vw, 1.75rem); 
+  margin: 0 0 var(--space-3); 
+  color: var(--fg);
+}
+.section-body{ color: var(--fg); }
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+}
+
+.card-title{
+  font-size: 1.125rem;
+  margin: 0 0 var(--space-4);
+  color: var(--fg);
+}
+
+.grid.auto{
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Lists */
+.list{ list-style: none; padding: 0; margin: 0; }
+.list-item{
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--border);
+}
+.list-item:last-child{ border-bottom: 0; }
+.list-primary{ color: var(--fg); }
+.list-secondary{ color: var(--muted); }
+.list-empty{ color: var(--muted); font-style: italic; padding: var(--space-2) 0; }
+
+/* Pills */
+.pill{
+  margin-left: auto;
+  font-size: .75rem;
+  line-height: 1;
+  padding: .35rem .5rem;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-fg);
+  border: 1px solid var(--border);
+}
+.pill--subtle{
+  margin-left: var(--space-2);
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* Positions (media-object pattern) */
+.position-list{ list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.position{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+.position-logo{
+  display: block;
+  border-radius: .5rem;
+  object-fit: cover;
+  inline-size: 80px; block-size: 80px;
+  border: 1px solid var(--border);
+}
+.position-content{ min-width: 0; }
+.position-header{
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-2);
+  align-items: center;
+}
+.position-company{ color: var(--fg); }
+.position-title{ color: var(--muted); font-weight: 500; }
+.position-description{ margin: var(--space-2) 0 0; color: var(--fg); }
+
+/* Focus visibility for keyboard users */
+:where(a, button, .card):focus-visible{
+  outline: 3px solid #60a5fa; /* blue-400 */
+  outline-offset: 3px;
+}
+
+/* Print-friendly tweaks */
+@media print{
+  .card{ box-shadow: none; }
+  .pill{ border: var(--border, #e5e7eb); background: transparent; }
+}

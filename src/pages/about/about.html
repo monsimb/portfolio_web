@@ -7,21 +7,74 @@
   <article class="card">
     <h2>Degrees</h2>
     <ul>
-      <li *ngFor="let d of degrees()"><strong>{{ d.school }}</strong> — {{ d.program }} <span class="help">{{ d.year }}</span></li>
+      @for (d of degrees(); track d) {
+        <li><strong>{{ d.school }}</strong> — {{ d.program }} <span class="help">[ {{ d.year }} ]</span></li>
+      } @empty {
+        <li class="help">No degrees listed.</li>
+      }
     </ul>
   </article>
 
   <article class="card">
     <h2>Certifications</h2>
-    <ul>
-      <li *ngFor="let c of certs()"><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
-    </ul>
-  </article>
+      <ul>
+        @for (c of certs(); track c) {
+          <li><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
+        } @empty {
+          <li class="help">No certifications listed.</li>
+        }
+      </ul>
+    </article>
 
-  <article class="card">
-    <h2>Positions</h2>
-    <ul>
-      <li *ngFor="let p of positions()"><strong>{{ p.company }}</strong> - <span class="help">{{ p.title }}</span></li>
+    <article class="card">
+      <h2>Positions</h2>
+      <ul class="position-list" role="list">
+      @for (p of positions(); track p) {
+        <li class="position" style="display: inline-block; margin-bottom: 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding: 1rem;" (click)="handleCardClick(p.link)">
+          <a
+            class="position-card"
+            [attr.href]="p.link || null"
+            [attr.target]="p.link ? '_blank' : null"
+            [attr.rel]="p.link ? 'noopener noreferrer' : null"
+            [attr.aria-label]="'View more about ' + p.company + ' position'"
+          >
+          <!-- Media block -->
+          <div class="position-media">
+            @if (p.images?.length) {
+              <ul style="display: flex; gap: 0.5rem; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;">
+                @for (src of p.images; track src; let i = $index) {
+                  <li class="image-item" style="display: flex;">
+                    <img
+                      [src]="src"
+                      [attr.alt]="p.company + ' image ' + (i + 1)"
+                      loading="lazy"
+                      width="96"
+                      height="auto"
+                      class="thumb"
+                      style="border-radius: 4px; box-shadow: var(--shadow);"
+                    />
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+
+          <!-- Content -->
+          <div class="position-content">
+            <div class="position-header">
+              <strong class="position-company">{{ p.company }}</strong>
+              <span class="position-title help">{{ p.title }} - </span>
+              <time class="badge">- {{ p.year }}</time>
+            </div>
+            @if (p.description) {
+              <p class="position-description">{{ p.description }}</p>
+            }
+          </div>
+          </a>
+        </li>
+      } @empty {
+        <li class="help">No positions listed.</li>
+      }
     </ul>
   </article>
 </section>
