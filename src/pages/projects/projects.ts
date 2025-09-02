@@ -31,6 +31,7 @@ export class ProjectsPage {
   isActive = (t: string) => this.currentFilter === t;
 
   projects = signal<Project[]>([
+    // todo: change to csv
     {
       title: 'This Portfolio Website!',
       description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
@@ -43,7 +44,8 @@ export class ProjectsPage {
       description: 'Eyeballs.',
       tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],
       link: 'https://example.com/ive',
-      year: 2025
+      year: 2025,
+      img: 'eyeballs.jpg'
     },
     {
       title: 'Bluetooth enabled SD Card MP3 Player from Scratch',
@@ -58,7 +60,7 @@ export class ProjectsPage {
       tech: ['Hackathon', 'LLM', 'GenAI', 'Cloudflare', 'Real-time data', ],
       link: 'https://devpost.com/software/planit-p6xz4q',
       year: 2025,
-      img: 'wehack_win.jpg' // Optional image URL
+      img: 'wehack_win.jpg'
     },
     {
       title: 'RuneRoutes - Capstone Project',
@@ -78,7 +80,7 @@ export class ProjectsPage {
     {
       title: '3D Printed Electric Violin',
       description: '',
-      tech: [],
+      tech: ['Hardware', '3D Printing'],
       link: 'https://example.com/predictive-maintenance',
       year: 2022,
       img: 'violin.png'

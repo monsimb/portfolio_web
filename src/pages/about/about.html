@@ -1,14 +1,41 @@
-<section class="card">
-  <h1>About Me</h1>
-  <p>{{ summary }}</p>
+<section class="card" style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding: 1rem; margin-bottom: .5rem;">
+  
+  <div style="display: flex; flex-direction: row; align-items: center; text-align: start; gap: 2rem;">
+    <article style="display: flex-column;">
+      <div style="margin-bottom: 1rem;">
+        <h2>{{ headline }}</h2>
+        <p>{{ summary }}</p>
+      </div>
+      <div class="stats-block" style="margin-bottom: 1rem; font-weight: 600;">
+        @for (s of stats(); track s) {
+          <ul><mat-icon aria-hidden="false" fontIcon={{s.icon}} style="vertical-align:bottom; font-size: x-large;"></mat-icon> <strong> {{ s.label}}</strong> - {{ s.value }}</ul>
+        } @empty {
+          <span class="help">No about information listed.</span>
+        }
+      </div>
+    </article>
+    
+    <img 
+      src="headshot_grad.JPG"
+      alt = "Headshot of Monique Simberg"
+      style="width:600px; height:auto; border-radius: 8px; border: 1px solid var(--border, #e5e7eb); margin-top: 1rem;"
+    />
+  </div>
+
 </section>
 
 <section style="margin-top:1rem" class="grid cols-2">
-  <article class="card">
+  <div style="display: flex; gap: 1rem;">
+    <article class="card">
     <h2>Degrees</h2>
-    <ul>
+    <ul style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
       @for (d of degrees(); track d) {
-        <li><strong>{{ d.school }}</strong> — {{ d.program }} <span class="help">[ {{ d.year }} ]</span></li>
+        <li>
+          <strong>{{ d.program }}</strong> — {{ d.school }} <span class="help">[ {{ d.year }} ]</span>
+          @if (d.accolades) {
+            <div class="help" style="font-style: italic;">{{ d.accolades }}</div>
+          }
+        </li>
       } @empty {
         <li class="help">No degrees listed.</li>
       }
@@ -17,7 +44,7 @@
 
   <article class="card">
     <h2>Certifications</h2>
-      <ul>
+      <ul style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
         @for (c of certs(); track c) {
           <li><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
         } @empty {
@@ -25,12 +52,13 @@
         }
       </ul>
     </article>
+  </div>
 
-    <article class="card">
-      <h2>Positions</h2>
-      <ul class="position-list" role="list">
+  <article class="card">
+    <h2>Positions</h2>
+    <ul class="position-list" role="list">
       @for (p of positions(); track p) {
-        <li class="position" style="display: inline-block; margin-bottom: 1rem; border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding: 1rem;" (click)="handleCardClick(p.link)">
+        <li class="position">
           <a
             class="position-card"
             [attr.href]="p.link || null"
@@ -38,38 +66,42 @@
             [attr.rel]="p.link ? 'noopener noreferrer' : null"
             [attr.aria-label]="'View more about ' + p.company + ' position'"
           >
-          <!-- Media block -->
-          <div class="position-media">
-            @if (p.images?.length) {
-              <ul style="display: flex; gap: 0.5rem; flex-wrap: wrap; list-style: none; padding: 0; margin: 0;">
-                @for (src of p.images; track src; let i = $index) {
-                  <li class="image-item" style="display: flex;">
-                    <img
-                      [src]="src"
-                      [attr.alt]="p.company + ' image ' + (i + 1)"
-                      loading="lazy"
-                      width="96"
-                      height="auto"
-                      class="thumb"
-                      style="border-radius: 4px; box-shadow: var(--shadow);"
-                    />
-                  </li>
+          <div style="display: flex; justify-content: space-between;">
+              <!-- Fixed-size media column (thumbnail column) -->
+              <div class="position-media">
+                @if (p.images?.length) {
+                  <ul class="image-row" role="list">
+                    @for (src of p.images; track src; let i = $index) {
+                      <li class="image-item">
+                        <img
+                          [src]="src"
+                          [attr.alt]="p.company + ' image ' + (i + 1)"
+                          loading="lazy"
+                          width="96"
+                          height="auto"
+                          class="thumb"
+                        />
+                      </li>
+                    }
+                  </ul>
                 }
-              </ul>
-            }
-          </div>
-
-          <!-- Content -->
-          <div class="position-content">
-            <div class="position-header">
-              <strong class="position-company">{{ p.company }}</strong>
-              <span class="position-title help">{{ p.title }} - </span>
-              <time class="badge">- {{ p.year }}</time>
+              </div>
+              <time class="badge">{{ p.year }}</time>
             </div>
-            @if (p.description) {
-              <p class="position-description">{{ p.description }}</p>
-            }
-          </div>
+
+            <!-- Text column stays aligned -->
+            <div class="position-content">
+              <div class="position-header">
+                <strong class="position-company">{{ p.company }}</strong>
+                
+                <span class="position-title help">{{ p.title }}</span>
+              </div>
+              @if (p.description) {
+                @for (desc of p.description; track desc) {
+                  <li class="position-description">{{ desc }}</li>
+                }
+              }
+            </div>
           </a>
         </li>
       } @empty {
