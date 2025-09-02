@@ -1,11 +1,22 @@
 @use '@angular/material' as mat;
 
-.root {
-    --fg: #111827;   
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
+:root {
+    --color: #0f172a; /* slate-900 */
+    --footer-color: #475569; /* slate-600 */
+    --link-color: #2563eb; /* blue-600 */
+    --link-hover: #1d4ed8; /* blue-700 */
+    --muted: #64748b; /* slate-500 */
+    --error-color: #b91c1c; /* red-700 */
+    --border-color: #e2e8f0; /* slate-200 */
+    --card-bg: #ffffff; /* white */
+    --shadow: 0 1px 2px rgba(0,0,0,.06);
+    --shadow-hover: 0 4px 6px rgba(0,0,0,0,.1), 0 1px 3px rgba(0,0,0,.06);
 }
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: #0f172a; /* slate-900 */
+}
+

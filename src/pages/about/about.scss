@@ -11,6 +11,10 @@ h1, h2 {
   line-height: 1.2;
 }
 
+.fontIcon {
+  fill: var(--muted)
+}
+
 .section{ margin-block: var(--space-6); }
 .section-title{ 
   font-size: clamp(1.25rem, 1.2rem + 1vw, 1.75rem); 
@@ -26,7 +30,6 @@ h1, h2 {
   padding: var(--space-6);
   box-shadow: var(--shadow);
 }
-
 .card-title{
   font-size: 1.125rem;
   margin: 0 0 var(--space-4);
@@ -130,13 +133,25 @@ h1, h2 {
   align-self: start;
 }
 
-@media (max-width: 560px) {
+.main-card {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  text-align: start; 
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
   .position-card {
     grid-template-columns: 1fr; /* stack */
   }
   .position-media {
     width: 100%;
     margin-bottom: .75rem;
+  }
+  .main-card {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 

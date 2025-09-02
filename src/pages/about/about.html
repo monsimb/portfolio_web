@@ -1,12 +1,12 @@
-<section class="card" style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding: 1rem; margin-bottom: .5rem;">
+<section class="card" style="padding: 1rem; margin-bottom: .5rem;">
   
-  <div style="display: flex; flex-direction: row; align-items: center; text-align: start; gap: 2rem;">
+  <div class="main-card">
     <article style="display: flex-column;">
       <div style="margin-bottom: 1rem;">
         <h2>{{ headline }}</h2>
         <p>{{ summary }}</p>
       </div>
-      <div class="stats-block" style="margin-bottom: 1rem; font-weight: 600;">
+      <div class="stats-block" style="margin-bottom: 1rem; font-weight: 600; min-width: 500px;">
         @for (s of stats(); track s) {
           <ul><mat-icon aria-hidden="false" fontIcon={{s.icon}} style="vertical-align:bottom; font-size: x-large;"></mat-icon> <strong> {{ s.label}}</strong> - {{ s.value }}</ul>
         } @empty {
@@ -28,7 +28,7 @@
   <div style="display: flex; gap: 1rem;">
     <article class="card">
     <h2>Degrees</h2>
-    <ul style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
+    <ul style="padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
       @for (d of degrees(); track d) {
         <li>
           <strong>{{ d.program }}</strong> — {{ d.school }} <span class="help">[ {{ d.year }} ]</span>
@@ -44,7 +44,7 @@
 
   <article class="card">
     <h2>Certifications</h2>
-      <ul style="border: 1px solid var(--border, #e5e7eb); border-radius: 8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
+      <ul style="8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
         @for (c of certs(); track c) {
           <li><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
         } @empty {
