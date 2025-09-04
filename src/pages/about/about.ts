@@ -31,6 +31,7 @@ export class AboutPage {
     { name: 'AWS ', issuer: 'AWS' },
     { name: 'CyberSecurity', issuer: 'UNT' },
     { name: 'CSWA (Certified SOLIDWORKS Associate)', issuer: 'SOLIDWORKS' },
+    { name: 'CERT (Certified Education Robot Training) program', issuer: 'FANUC' },
     { name: 'Other notable certifications', issuer: '—' }
   ]);
 

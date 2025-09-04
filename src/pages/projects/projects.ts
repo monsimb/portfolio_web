@@ -34,7 +34,7 @@ export class ProjectsPage {
     // todo: change to csv
     {
       title: 'This Portfolio Website!',
-      description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
+      description: 'Using Angular to create a responsive, clean, portfolio website to compile and showcase projects and contact information.',
       tech: ['Angular', ],
       link: 'https://example.com/ive',
       year: 2025
