@@ -1,16 +1,19 @@
-
 <div class="container">
   <h2>Reach out!</h2>
 
-  <form [formGroup]="contactForm" class="contact-form">
+  <form [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        class="contact-form"
+        novalidate>
     <div class="two-col">
       <!-- name -->
       <div class="field">
         <label for="name">Your name</label>
-        <input id="name" type="text" formControlName="name" placeholder="Sam Doe"
-               [attr.aria-invalid]="name.invalid && (name.dirty || name.touched)" />
+        <input id="name" type="text" formControlName="name" name="name" placeholder="Sam Doe"
+               [attr.aria-invalid]="name.invalid && (name.dirty || name.touched)"
+               autocomplete="name" />
         @if (name.touched || name.dirty) {
-          <div class="alert" role="alert">
+          <div class="alert" role="alert" aria-live="polite">
             @if (name.hasError('required')) { <div>Name is required.</div> }
             @if (name.hasError('minlength')) { <div>Name must be at least 5 characters long.</div> }
           </div>
@@ -20,10 +23,11 @@
       <!-- email -->
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" placeholder="youremail@email.com"
-               [attr.aria-invalid]="email.invalid && (email.dirty || email.touched)" />
+        <input id="email" type="email" formControlName="email" name="email" placeholder="youremail@email.com"
+               [attr.aria-invalid]="email.invalid && (email.dirty || email.touched)"
+               autocomplete="email" />
         @if (email.touched || email.dirty) {
-          <div class="alert" role="alert">
+          <div class="alert" role="alert" aria-live="polite">
             @if (email.hasError('required')) { <div>Email is required.</div> }
             @if (email.hasError('email')) { <div>Must be a valid email.</div> }
           </div>
@@ -33,20 +37,22 @@
 
     <div class="field">
       <label for="position">Position</label>
-      <input id="position" type="text" formControlName="position" placeholder="SDE @ AWS" />
+      <input id="position" type="text" formControlName="position" name="position" placeholder="SDE @ AWS" />
     </div>
 
     <div class="field">
       <label for="messageBody">Message</label>
-      <textarea id="messageBody" rows="8" cols="65" formControlName="message"
+      <textarea id="messageBody" rows="8" cols="65" formControlName="message" name="message"
                 placeholder="Teehee <3 message time"></textarea>
       @if (message.invalid && (message.dirty || message.touched)) {
-        <div class="field-errors" role="alert">
+        <div class="field-errors" role="alert" aria-live="polite">
           @if (message.errors?.['required']) { <p class="error">A message is required.</p> }
         </div>
       }
     </div>
 
-    <button type="submit" [disabled]="contactForm.invalid">Send</button>
+    <button type="submit" [disabled]="contactForm.invalid || loading()">
+      @if (!loading()) { Send } @else { Sending… }
+    </button>
   </form>
 </div>

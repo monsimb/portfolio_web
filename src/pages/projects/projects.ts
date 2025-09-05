@@ -35,23 +35,21 @@ export class ProjectsPage {
     {
       title: 'This Portfolio Website!',
       description: 'Using Angular to create a responsive, clean, portfolio website to compile and showcase projects and contact information.',
-      tech: ['Angular', ],
-      link: 'https://example.com/ive',
+      tech: ['Angular', ' Web Development'],
+      link: 'msimberg.tech',
       year: 2025
     },    
     {
       title: 'Eyeballs',
-      description: 'Eyeballs.',
+      description: 'Based off Will Cogley\'s eye mechanism, this project uses an ESP32 and servo motors to create a pair of robotic eyeballs that can track movement and react.',
       tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],
-      link: 'https://example.com/ive',
       year: 2025,
       img: 'eyeballs.jpg'
     },
     {
       title: 'Bluetooth enabled SD Card MP3 Player from Scratch',
-      description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control.',
+      description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control reading files from an SD card.',
       tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],  // tags/keywords
-      link: 'https://example.com/ive',
       year: 2025
     },
     {
@@ -67,6 +65,7 @@ export class ProjectsPage {
       description: 'React Native app with POIs, custom markers, and fog-of-war exploration.',
       tech: ['Hackathon', 'Mobile', 'React Native', 'Mapbox', 'Turf.js'],
       year: 2025,
+      link: 'https://engineering.unt.edu/academics/files/CS_SeniorDesign_Spr25Abstracts.pdf',
       img: 'capstone.jpg'
     },
     {

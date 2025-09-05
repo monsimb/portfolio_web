@@ -31,6 +31,10 @@
   text-decoration: none;
   color: #0f172a;
   letter-spacing: 0.2px;
+  align-self: end;
+}
+h1 {
+ align-self: end;
 }
 .nav {
   list-style: none;
@@ -38,6 +42,7 @@
   gap: 1rem;
   margin-left: auto;
   padding: 0;
+  align-self: end;
 }
 .nav a {
   text-decoration: none;

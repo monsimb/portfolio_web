@@ -28,11 +28,11 @@ export class AboutPage {
   ]);
 
   certs = signal<Cert[]>([
-    { name: 'AWS ', issuer: 'AWS' },
-    { name: 'CyberSecurity', issuer: 'UNT' },
+    // { name: 'AWS ', issuer: 'AWS' },
+    { name: 'Security Certificate', issuer: 'UNT' },
     { name: 'CSWA (Certified SOLIDWORKS Associate)', issuer: 'SOLIDWORKS' },
     { name: 'CERT (Certified Education Robot Training) program', issuer: 'FANUC' },
-    { name: 'Other notable certifications', issuer: '—' }
+    // { name: 'Other notable certifications', issuer: '—' }
   ]);
 
   positions = signal<Position[]>([
