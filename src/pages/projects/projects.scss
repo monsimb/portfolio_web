@@ -22,7 +22,7 @@ h1 {
 
 .sidebar {
   position: sticky;
-  top: calc(var(--header-h));
+  top: calc(var(--header-h) + .75rem);
   background: var(--surface-1, #fff);
   border: 1px solid var(--border, #e5e7eb);
   border-radius: 12px;
