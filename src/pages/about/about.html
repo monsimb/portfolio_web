@@ -1,27 +1,112 @@
-<section class="card">
-  <h1>About Me</h1>
-  <p>{{ summary }}</p>
+<section class="card" style="padding: 1rem; margin-bottom: .5rem;">
+  
+  <div class="main-card">
+    <article style="display: flex-column;">
+      <div style="margin-bottom: 1rem;">
+        <h2>{{ headline }}</h2>
+        <p>{{ summary }}</p>
+      </div>
+      <div class="stats-block" style="margin-bottom: 1rem; font-weight: 600; min-width: 500px;">
+        @for (s of stats(); track s) {
+          <ul><mat-icon aria-hidden="false" fontIcon={{s.icon}} style="vertical-align:bottom; font-size: x-large;"></mat-icon> <strong> {{ s.label}}</strong> - {{ s.value }}</ul>
+        } @empty {
+          <span class="help">No about information listed.</span>
+        }
+      </div>
+    </article>
+    
+    <img 
+      src="headshot_grad.JPG"
+      alt = "Headshot of Monique Simberg"
+      style="width:600px; height:auto; border-radius: 8px; border: 1px solid var(--border, #e5e7eb); margin-top: 1rem;"
+    />
+  </div>
+
 </section>
 
 <section style="margin-top:1rem" class="grid cols-2">
-  <article class="card">
+  <div style="display: flex; gap: 1rem;">
+    <article class="card">
     <h2>Degrees</h2>
-    <ul>
-      <li *ngFor="let d of degrees()"><strong>{{ d.school }}</strong> — {{ d.program }} <span class="help">{{ d.year }}</span></li>
+    <ul style="padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
+      @for (d of degrees(); track d) {
+        <li>
+          <strong>{{ d.program }}</strong> — {{ d.school }} <span class="help">[ {{ d.year }} ]</span>
+          @if (d.accolades) {
+            <div class="help" style="font-style: italic;">{{ d.accolades }}</div>
+          }
+        </li>
+      } @empty {
+        <li class="help">No degrees listed.</li>
+      }
     </ul>
   </article>
 
   <article class="card">
     <h2>Certifications</h2>
-    <ul>
-      <li *ngFor="let c of certs()"><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
-    </ul>
-  </article>
+      <ul style="8px; padding-right: 1rem; padding-top: .5rem; padding-bottom: .5rem;">
+        @for (c of certs(); track c) {
+          <li><strong>{{ c.name }}</strong> — <span class="help">{{ c.issuer }}</span></li>
+        } @empty {
+          <li class="help">No certifications listed.</li>
+        }
+      </ul>
+    </article>
+  </div>
 
   <article class="card">
     <h2>Positions</h2>
-    <ul>
-      <li *ngFor="let p of positions()"><strong>{{ p.company }}</strong> - <span class="help">{{ p.title }}</span></li>
+    <ul class="position-list" role="list">
+      @for (p of positions(); track p) {
+        <li class="position">
+          <a
+            class="position-card"
+            [attr.href]="p.link || null"
+            [attr.target]="p.link ? '_blank' : null"
+            [attr.rel]="p.link ? 'noopener noreferrer' : null"
+            [attr.aria-label]="'View more about ' + p.company + ' position'"
+          >
+          <div style="display: flex; justify-content: space-between;">
+              <!-- Fixed-size media column (thumbnail column) -->
+              <div class="position-media">
+                @if (p.images?.length) {
+                  <ul class="image-row" role="list">
+                    @for (src of p.images; track src; let i = $index) {
+                      <li class="image-item">
+                        <img
+                          [src]="src"
+                          [attr.alt]="p.company + ' image ' + (i + 1)"
+                          loading="lazy"
+                          width="96"
+                          height="auto"
+                          class="thumb"
+                        />
+                      </li>
+                    }
+                  </ul>
+                }
+              </div>
+              <time class="badge">{{ p.year }}</time>
+            </div>
+
+            <!-- Text column stays aligned -->
+            <div class="position-content">
+              <div class="position-header">
+                <strong class="position-company">{{ p.company }}</strong>
+                
+                <span class="position-title help">{{ p.title }}</span>
+              </div>
+              @if (p.description) {
+                @for (desc of p.description; track desc) {
+                  <li class="position-description">{{ desc }}</li>
+                }
+              }
+            </div>
+          </a>
+        </li>
+      } @empty {
+        <li class="help">No positions listed.</li>
+      }
     </ul>
   </article>
 </section>
