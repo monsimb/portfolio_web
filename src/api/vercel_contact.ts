@@ -6,7 +6,10 @@ function isEmail(v: string) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method === 'OPTIONS') return res.status(200).end(); // CORS preflight
+  if (req.method === 'GET') return res.status(200).json({ ok: true, msg: 'Contact API is alive' });
+  if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'Method not allowed' });
+  
 
   const { name, email, position = '', message } = req.body || {};
 

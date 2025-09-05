@@ -12,7 +12,7 @@ export interface ContactPayload {
 @Injectable({ providedIn: 'root' })
 export class ContactService {
   private http = inject(HttpClient);
-  private endpoint = '/api/contact';
+  private endpoint = '/api/vercel_contact';
 
   send(payload: ContactPayload): Observable<void> {
     return this.http.post<void>(this.endpoint, payload);

@@ -35,21 +35,21 @@ export class ProjectsPage {
     {
       title: 'This Portfolio Website!',
       description: 'Using Angular to create a responsive, clean, portfolio website to compile and showcase projects and contact information.',
-      tech: ['Angular', ' Web Development'],
+      tech: ['Angular', ' Web Development','Work in Progress [WIP]'],
       link: 'msimberg.tech',
       year: 2025
     },    
     {
       title: 'Eyeballs',
       description: 'Based off Will Cogley\'s eye mechanism, this project uses an ESP32 and servo motors to create a pair of robotic eyeballs that can track movement and react.',
-      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],
+      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32','Work in Progress [WIP]'],
       year: 2025,
       img: 'eyeballs.jpg'
     },
     {
       title: 'Bluetooth enabled SD Card MP3 Player from Scratch',
       description: 'Leveraging an ESP32 to create a custom MP3 player with Bluetooth control reading files from an SD card.',
-      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32'],  // tags/keywords
+      tech: ['ArduinoIDE', 'Hardware', 'Embedded', 'ESP32', 'Work in Progress [WIP]'],  // tags/keywords
       year: 2025
     },
     {
