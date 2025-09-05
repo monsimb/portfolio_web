@@ -1,8 +1,7 @@
-:host { display: block; }
-
 .container {
   width: min(720px, 92vw); 
-  margin-inline: auto;      
+  margin-inline: auto;  
+  display: grid;    
 }
 
 h2 {
@@ -14,7 +13,6 @@ h2 {
 .contact-form {
   display: grid;
   gap: 12px;
-  padding: 16px 20px;
   width: 100%;              
 }
 
@@ -43,7 +41,7 @@ button[type="submit"] {
   justify-self: center;
   padding: 10px 16px;
   color: #fff;
-  background-color: aquamarine;
+  background-color: grey;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;

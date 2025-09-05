@@ -29,7 +29,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-  min-height: 64px;
+  min-height: var(--header-h);
 }
 .logo {
   font-weight: 700;

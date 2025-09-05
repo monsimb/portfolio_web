@@ -6,6 +6,10 @@
   align-items: start;
 }
 
+h1 {
+  font-weight: 600;
+}
+
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
@@ -18,7 +22,7 @@
 
 .sidebar {
   position: sticky;
-  top: 1rem;
+  top: calc(var(--header-h));
   background: var(--surface-1, #fff);
   border: 1px solid var(--border, #e5e7eb);
   border-radius: 12px;
