@@ -1,8 +1,7 @@
-// contact.page.ts
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ContactService, ContactPayload } from './contact.service';
+import { ContactService, ContactPayload } from './contact.services';
 
 @Component({
   selector: 'app-contact',
@@ -22,20 +21,18 @@ export class ContactPage {
   });
 
   loading = signal(false);
-  ping = signal(false);
 
   get name() { return this.contactForm.get('name')!; }
   get email() { return this.contactForm.get('email')!; }
   get message() { return this.contactForm.get('message')!; }
 
   onSubmit() {
-    // touch all controls to reveal errors if invalid
     this.contactForm.markAllAsTouched();
     if (this.contactForm.invalid) return;
 
     const payload = this.contactForm.getRawValue() as ContactPayload;
-
     this.loading.set(true);
+
     this.contactSvc.send(payload).subscribe({
       next: () => {
         alert('Thanks! Your message was sent.');
