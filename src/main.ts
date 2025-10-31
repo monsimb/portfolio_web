@@ -4,11 +4,11 @@ import { provideRouter } from '@angular/router';
 import { App } from './app/app';
 import { routes } from './app/app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideZonelessChangeDetection } from '@angular/core'; // ✅
+import { provideZonelessChangeDetection } from '@angular/core';
 
 bootstrapApplication(App, {
   providers: [
-    provideZonelessChangeDetection(), // ✅ no Zone.js required
+    provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(withFetch()),
   ],
