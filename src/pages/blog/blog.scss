@@ -1,0 +1,5 @@
+/* Simple blog list styles */
+.page.blog .blocks { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.card { padding: 1rem; border-radius: 8px; background: var(--card-bg); box-shadow: var(--card-shadow); }
+.muted { color: var(--muted); font-size: 0.9rem; }
+.help { color: var(--muted); }

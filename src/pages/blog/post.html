@@ -1,0 +1,8 @@
+<section class="page blog-post">
+  <article class="card">
+    <h1>{{ title() }}</h1>
+    <p class="muted">{{ date() | date:'longDate' }}</p>
+
+    <div [innerHTML]="html()"></div>
+  </article>
+</section>

@@ -1,0 +1,24 @@
+<section class="page blog">
+  <h1>Blog</h1>
+
+  <div class="blocks">
+    @if (error()) {
+      <p class="error">Could not load posts: {{ error() }}</p>
+    }
+
+    @if (!posts().length) {
+      <p class="help">No posts yet. If you expected posts, run `npm run build:blog-assets` to regenerate assets, then refresh the page.</p>
+    } @else {
+      <p class="muted">Showing {{ posts().length }} post(s)</p>
+    }
+
+    @for (post of posts(); track post.slug) {
+      <article class="card">
+        <h3><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h3>
+        <p class="muted">{{ post.date | date:'longDate' }}</p>
+        <p>{{ post.excerpt }}</p>
+        <p><a [routerLink]="['/blog', post.slug]">Read →</a></p>
+      </article>
+    }
+  </div>
+</section>
