@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "node scripts/generate_posts.js",
+    "prebuild": "node scripts/generate_posts.js",
     "start": "ng serve",
     "build": "ng build",
     "build:blog-assets": "node scripts/generate_posts.js",
