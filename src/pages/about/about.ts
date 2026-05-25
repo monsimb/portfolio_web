@@ -56,9 +56,10 @@ export class AboutPage {
   headline = 'I\'m Monique Simberg, a new grad Software Engineer.';
 
   stats = signal<Stat[]>([
-    { icon: 'home_work', label: 'Currently located', value: 'Dallas, Texas'},
+    { icon: 'home_work', label: 'Currently located', value: 'Boston, Massachusetts'},
     { icon: 'school', label: 'Alma Mater', value: 'University of North Texas'},
-    { icon: 'work', label: 'Previous Internships', value: 'Amazon (2x), Voestalpine, Mohawk College IDEAWORKS'},
+    { icon: 'work', label: 'SDE', value: 'Amazon Web Services'},
+    { icon: 'work_history', label: 'Previous Internships', value: 'Amazon (2x), Voestalpine, Mohawk College IDEAWORKS'},
     { icon: 'verified', label: 'Certifications', value: 'AWS, CyberSecurity, CSWA (Certified SOLIDWORKS Associate), FANUC Certified Education Robotics Training (CERT)'},
     { icon: 'emoji_events', label: 'Honors & Awards', value: 'Magna Cum Laude, Foundry Education Foundation Canada Scholarship, UNT Dean\'s List (4x)'},
     { icon: 'code', label: 'Languages & Frameworks', value: 'Python, JavaScript, TypeScript, Node.js, Angular, AWS'},
