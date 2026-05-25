@@ -1,5 +1,188 @@
-/* Simple blog list styles */
-.page.blog .blocks { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-.card { padding: 1rem; border-radius: 8px; background: var(--card-bg); box-shadow: var(--card-shadow); }
-.muted { color: var(--muted); font-size: 0.9rem; }
-.help { color: var(--muted); }
+.page.blog {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.blog-hero {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blog-hero h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.intro {
+  max-width: 620px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.blocks {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.blog-summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.blog-summary p {
+  margin: 0;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+  border-radius: 18px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--muted) 32%, transparent);
+}
+
+.post-card-content {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.dot {
+  opacity: 0.65;
+}
+
+.post-card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.post-card h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.excerpt {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.tag {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.read-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.state {
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+.state h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.state p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.state-error {
+  border: 1px solid rgba(220, 38, 38, 0.35);
+}
+
+.state-error h2 {
+  color: #dc2626;
+}
+
+.state-empty code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+}
+
+@media (max-width: 640px) {
+  .page.blog {
+    padding-top: 2rem;
+  }
+
+  .post-card {
+    min-height: auto;
+  }
+}
