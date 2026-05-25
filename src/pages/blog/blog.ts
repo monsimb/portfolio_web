@@ -15,19 +15,25 @@ export class BlogPage implements OnInit {
   private blog = inject(BlogService);
 
   posts = signal<PostMeta[]>([]);
+  loading = signal<boolean>(true);
   error = signal<string | null>(null);
 
   ngOnInit() {
     this.blog.getPosts().subscribe({
-      next: (posts) => {
+      next: posts => {
         const sortedPosts = [...posts].sort((a, b) => {
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
+          const aTime = new Date(a.date).getTime();
+          const bTime = new Date(b.date).getTime();
+
+          return bTime - aTime;
         });
 
         this.posts.set(sortedPosts);
+        this.loading.set(false);
       },
-      error: (err) => {
-        this.error.set(String(err));
+      error: err => {
+        this.error.set('Failed to load blog posts.');
+        this.loading.set(false);
         console.error('Failed to load posts', err);
       }
     });
