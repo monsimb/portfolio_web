@@ -34,10 +34,6 @@
                   {{ post.date | date:'mediumDate' }}
                 </time>
 
-                @if (post.tags?.length) {
-                  <span class="dot">•</span>
-                  <span>{{ post.tags?.[0] }}</span>
-                }
               </div>
 
               <h2>
