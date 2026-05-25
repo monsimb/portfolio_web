@@ -36,6 +36,7 @@ export class AboutPage {
   ]);
 
   positions = signal<Position[]>([
+    { title: 'Software Development Engineer', company: 'Amazon - FSx for Lustre', year: '2026-current', description: ['Working to continously improve the FSx for Lustre service through meaningful code contribution and operation.'], link: "https://aws.amazon.com/fsx/lustre/", images: ['aws_logo_thumb.svg', 'aws_lustre_logo.png'] },
     { title: 'Software Engineer Intern', company: 'Amazon - FSx for Lustre', year: '2025', description: ['Worked on scalable, customer-facing alterations to existing software using AWS technologies and FSx code base.'], link: "https://aws.amazon.com/fsx/lustre/", images: ['aws_logo_thumb.svg', 'aws_lustre_logo.png'] },
     { title: 'Research Lab Assistant', company: 'UNT - Materials Laboratory', year: '2025', description: ['Helped modernize the lab’s computational capabilities by initiating the migration of legacy Fortran code to Python and creating new software tools to streamline existing and future research workflows.'], link: "https://engineering.unt.edu/mse/", images: ['unt_engineering.jpg'] },
     { title: 'Software Engineer Intern', company: 'Amazon - Just Walk Out', year: '2024', description: ['Created a proof of concept chatbot leveraging AWS\' Bedrock knowledge bases to improve team and on-call experience by chatting with internal documentation.'], link: "https://aws.amazon.com/just-walk-out/", images: ['aws_logo_thumb.svg', 'just_walk_out_logo.jpg'] },
