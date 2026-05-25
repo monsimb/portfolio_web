@@ -1,24 +1,75 @@
 <section class="page blog">
-  <h1>Blog</h1>
+  <header class="blog-hero">
+    <p class="eyebrow">Writing</p>
+    <h1>Blog</h1>
+    <p class="intro">
+      Notes, reviews, research, and personal writing.
+    </p>
+  </header>
 
   <div class="blocks">
     @if (error()) {
-      <p class="error">Could not load posts: {{ error() }}</p>
+      <div class="state state-error">
+        <h2>Could not load posts</h2>
+        <p>{{ error() }}</p>
+      </div>
     }
 
-    @if (!posts().length) {
-      <p class="help">No posts yet. If you expected posts, run `npm run build:blog-assets` to regenerate assets, then refresh the page.</p>
+    @if (!posts().length && !error()) {
+      <div class="state state-empty">
+        <h2>No posts yet</h2>
+        <p>
+          If you expected posts, run
+          <code>npm run build:blog-assets</code>
+          to regenerate assets, then refresh the page.
+        </p>
+      </div>
     } @else {
-      <p class="muted">Showing {{ posts().length }} post(s)</p>
-    }
+      <div class="blog-summary">
+        <p>Showing {{ posts().length }} post(s)</p>
+      </div>
 
-    @for (post of posts(); track post.slug) {
-      <article class="card">
-        <h3><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h3>
-        <p class="muted">{{ post.date | date:'longDate' }}</p>
-        <p>{{ post.excerpt }}</p>
-        <p><a [routerLink]="['/blog', post.slug]">Read →</a></p>
-      </article>
+      <div class="post-grid">
+        @for (post of posts(); track post.slug) {
+          <article class="post-card">
+            <div class="post-card-content">
+              <div class="post-meta">
+                <time [attr.datetime]="post.date">
+                  {{ post.date | date:'mediumDate' }}
+                </time>
+
+                @if (post.tags?.length) {
+                  <span class="dot">•</span>
+                  <span>{{ post.tags?.[0] }}</span>
+                }
+              </div>
+
+              <h2>
+                <a [routerLink]="['/blog', post.slug]">
+                  {{ post.title }}
+                </a>
+              </h2>
+
+              @if (post.excerpt) {
+                <p class="excerpt">{{ post.excerpt }}</p>
+              }
+
+              @if (post.tags?.length) {
+                <div class="tags">
+                  @for (tag of post.tags; track tag) {
+                    <span class="tag">{{ tag }}</span>
+                  }
+                </div>
+              }
+            </div>
+
+            <a class="read-link" [routerLink]="['/blog', post.slug]">
+              Read post
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        }
+      </div>
     }
   </div>
 </section>
