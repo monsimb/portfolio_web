@@ -13,14 +13,23 @@ import { BlogService, PostMeta } from './blog.services';
 })
 export class BlogPage implements OnInit {
   private blog = inject(BlogService);
+
   posts = signal<PostMeta[]>([]);
   error = signal<string | null>(null);
-  debug = signal<any>(null);
 
   ngOnInit() {
     this.blog.getPosts().subscribe({
-      next: (p) => { this.posts.set(p); this.debug.set(p); },
-      error: (err) => { this.error.set(String(err)); console.error('Failed to load posts', err); }
+      next: (posts) => {
+        const sortedPosts = [...posts].sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+
+        this.posts.set(sortedPosts);
+      },
+      error: (err) => {
+        this.error.set(String(err));
+        console.error('Failed to load posts', err);
+      }
     });
   }
-};
+}
