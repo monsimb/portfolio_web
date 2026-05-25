@@ -1,8 +1,21 @@
 <section class="page blog-post">
-  <article class="card">
-    <h1>{{ title() }}</h1>
-    <p class="muted">{{ date() | date:'longDate' }}</p>
+  <article class="post-card">
+    <header class="post-header">
+      <p class="eyebrow">Blog post</p>
 
-    <div [innerHTML]="html()"></div>
+      <h1>{{ title() }}</h1>
+
+      <div class="post-meta">
+        <time>{{ date() | date:'longDate' }}</time>
+      </div>
+
+      <div class="post-tags" *ngIf="tags().length">
+        <span *ngFor="let tag of tags()">#{{ tag }}</span>
+      </div>
+    </header>
+
+    <div class="post-divider"></div>
+
+    <div class="markdown-body" [innerHTML]="html()"></div>
   </article>
 </section>
