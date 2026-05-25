@@ -1,6 +1,5 @@
 <section class="page blog">
   <header class="blog-hero">
-    <p class="eyebrow">Writing</p>
     <h1>Blog</h1>
     <p class="intro">
       Notes, reviews, research, and personal writing.
@@ -26,10 +25,7 @@
       </div>
     } @else {
       <div class="blog-summary">
-        <p>Showing {{ posts().length }} post(s)</p>
-      </div>
-
-      <div class="post-grid">
+        <div class="post-grid">
         @for (post of posts(); track post.slug) {
           <article class="post-card">
             <div class="post-card-content">
@@ -70,6 +66,10 @@
           </article>
         }
       </div>
+        <p>Showing {{ posts().length }} post(s)</p>
+      </div>
+
+      
     }
   </div>
 </section>
